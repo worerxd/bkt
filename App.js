@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+ import React from 'react';
+ import {NavigationContainer} from '@react-navigation/native';
+ import {createNativeStackNavigator} from '@react-navigation/native-stack';
+ import HomeScreen from './screens/home/Home';
+ import ScholarshipScreen from './screens/scholarship/Scholarship';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+ const Stack = createNativeStackNavigator();
+
+ const App = () => {
+   return (
+     <NavigationContainer>
+       <Stack.Navigator initialRouteName="Scholarships">
+         <Stack.Screen name="Home" component={HomeScreen} />
+         <Stack.Screen name="Scholarships" component={ScholarshipScreen} />
+       </Stack.Navigator>
+     </NavigationContainer>
+   );
+ };
+
+ export default App;
