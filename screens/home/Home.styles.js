@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#b7d7e8',
     justifyContent: 'center',
+    marginTop: 20,
   },
   imageContainer: {
     flex: 3,
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     borderBottomLeftRadius: 100,
   },
-  body:{
+  body: {
     flex: 2,
   },
   title: {
@@ -50,3 +51,5 @@ export const styles = StyleSheet.create({
     padding: 5,
   },
 });
+
+export default styles;

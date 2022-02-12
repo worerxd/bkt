@@ -2,7 +2,7 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 
-import {styles} from './Home.styles';
+import styles from './Home.styles';
 
 const Home = ({navigation}) => {
   const goToAbout = () => {
@@ -21,7 +21,8 @@ const Home = ({navigation}) => {
       <View style={styles.body}>
         <Text style={styles.title}>Encuentra tu {'\n'}beca ideal!</Text>
         <Text style={styles.description}>
-          El app donde encontrarás  {'\n'}todas las becas en un {'\n'}mismo lugar.
+          El app donde encontrarás {'\n'}todas las becas en un {'\n'}mismo
+          lugar.
         </Text>
       </View>
       <View style={styles.buttonContainer}>

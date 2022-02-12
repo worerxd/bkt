@@ -1,28 +1,29 @@
 import {StyleSheet} from 'react-native';
-export const styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
   item: {
     flex: 1,
-    padding: 5,
+    padding: 8,
     marginVertical: 5,
     backgroundColor: 'white',
-    marginHorizontal: 10,
-  },
-  card: {
-    shadowColor: '#9fa9a3',
+    width: '100%',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 5,
     },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
   },
   date: {
     paddingVertical: 5,
     marginLeft: 5,
-    fontWeight: '500'
+    fontWeight: '500',
   },
   image: {
     height: 250,
-    marginHorizontal: 'auto',
-    width: '95%',
+    width: '100%',
   },
   header: {
     paddingVertical: 5,
@@ -35,23 +36,34 @@ export const styles = StyleSheet.create({
   },
   hoster: {
     paddingVertical: 10,
-    color: "#9fa9a3",
+    color: '#9fa9a3',
   },
   tagsContainer: {
-    display:'flex',
+    display: 'flex',
     flexDirection: 'row',
   },
   tag: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    fontSize: 16,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
     backgroundColor: 'purple',
-    color: 'white',
-    borderRadius: 15,
+    borderRadius: 5,
     textAlign: 'center',
-    width: 'fit-content',
+    alignSelf: 'flex-start',
     marginLeft: 5,
     marginTop: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 3,
+  },
+  tagText: {
+    color: 'white',
+    fontSize: 13,
+    fontWeight: '700',
   },
   body: {
     flexDirection: 'row',
@@ -67,11 +79,12 @@ export const styles = StyleSheet.create({
   },
   textBold: {
     marginTop: 5,
-    fontSize: 18,
-    fontWeight: '700'
+    fontSize: 15,
+    fontWeight: '700',
   },
   textTitle: {
-    fontSize: 16,
+    fontSize: 15,
+    color: '#272424',
   },
   hr: {
     marginTop: 10,
@@ -81,6 +94,9 @@ export const styles = StyleSheet.create({
   arrow: {
     marginVertical: 15,
     marginEnd: 10,
-    textAlign: 'right'
-  }
+    marginLeft: 'auto',
+    marginRight: 15,
+  },
 });
+
+export default styles;
