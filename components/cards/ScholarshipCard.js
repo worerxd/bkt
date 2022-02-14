@@ -1,13 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {Text, View, TouchableHighlight, Image} from 'react-native';
+import {Text, View, TouchableHighlight} from 'react-native';
 import {FontAwesome, FontAwesome5} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './ScholarshipCard.styles';
 
 const ScholarshipCard = props => {
-  const {id, date, imageUrl, title, hoster, tags, target, time} = props;
+  const {id, date, title, hoster, tags, target, duration, spots} = props;
   const navigation = useNavigation();
 
   const handleCardDetail = () => {
@@ -24,12 +24,13 @@ const ScholarshipCard = props => {
           <FontAwesome name="circle" size={14} color="green" />
           {` Abierta hasta ${date.end}`}
         </Text>
-        <Image
+        {/* <Image
           style={styles.image}
           source={{
             uri: imageUrl,
           }}
-        />
+          resizeMode="stretch"
+        /> */}
         <View style={styles.header}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.hoster}>{hoster}</Text>
@@ -55,11 +56,11 @@ const ScholarshipCard = props => {
         <View style={styles.body}>
           <View style={styles.leftSection}>
             <Text style={styles.textTitle}>Duración de la beca</Text>
-            <Text style={styles.textBold}>{time.duration}</Text>
+            <Text style={styles.textBold}>{duration}</Text>
           </View>
           <View style={styles.rightSection}>
             <Text style={styles.textTitle}>Plazas</Text>
-            <Text style={styles.textBold}>{time.spots} becas</Text>
+            <Text style={styles.textBold}>{spots} becas</Text>
           </View>
         </View>
         <TouchableHighlight

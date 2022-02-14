@@ -19,7 +19,7 @@ const Home = ({navigation}) => {
         />
       </View>
       <View style={styles.body}>
-        <Text style={styles.title}>Encuentra tu {'\n'}beca ideal!</Text>
+        <Text style={styles.title}>Encuentra tu {'\n'}beca ideal !</Text>
         <Text style={styles.description}>
           El app donde encontrarás {'\n'}todas las becas en un {'\n'}mismo
           lugar.

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DEEAEE',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 25,
   },
   linearContainer: {
     alignItems: 'center',
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     width: '100%',
     flexDirection: 'row',
+    marginBottom: 15,
   },
   title: {
     color: 'white',
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 5,
   },
   picker: {
     width: 160,

@@ -5,24 +5,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     marginVertical: 5,
+    marginHorizontal: 30,
     backgroundColor: 'white',
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   date: {
-    paddingVertical: 5,
+    paddingBottom: 5,
     marginLeft: 5,
     fontWeight: '500',
   },
   image: {
-    height: 250,
+    height: 180,
     width: '100%',
   },
   header: {
@@ -36,7 +30,7 @@ const styles = StyleSheet.create({
   },
   hoster: {
     paddingVertical: 10,
-    color: '#9fa9a3',
+    color: '#202124',
   },
   tagsContainer: {
     display: 'flex',
@@ -92,7 +86,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   arrow: {
-    marginVertical: 15,
+    marginTop: 10,
     marginEnd: 10,
     marginLeft: 'auto',
     marginRight: 15,

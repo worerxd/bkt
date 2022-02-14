@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -9,23 +10,57 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {FontAwesome} from '@expo/vector-icons';
 import HomeScreen from './screens/home/Home';
 import ScholarshipScreen from './screens/scholarship/Scholarship';
 import DetailScreen from './screens/detail/Detail';
+import SignUpScreen from './screens/signUp/SignUp';
+
+import iconsName from './utils/icons';
 
 const Stack = createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
+
+const Landing = () => {
+  return (
+    <Tab.Navigator
+      labeled={false}
+      activeColor="white"
+      inactiveColor="#54001A"
+      barStyle={{backgroundColor: '#8B9191'}}
+      options={{
+        tabBarShowLabel: false,
+      }}
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color}) => {
+          const iconName = iconsName(route.name);
+
+          return <FontAwesome name={iconName} size={18} color={color} />;
+        },
+      })}>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Scholarships" component={ScholarshipScreen} />
+      <Tab.Screen name="SignUp" component={SignUpScreen} />
+      {/* <Tab.Screen name="Locations" component={LocationsScreen} /> */}
+    </Tab.Navigator>
+  );
+};
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Scholarships" component={ScholarshipScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Landing"
+          component={Landing}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          options={{headerTitle: 'Detalle de Beca'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

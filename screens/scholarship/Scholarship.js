@@ -32,10 +32,8 @@ const data = [
       directedTo: 'Joven Profesional, Profesional experimentado',
       fromUniversity: 'Cualquier universidad',
     },
-    time: {
-      duration: '12 semanas',
-      spots: '5000',
-    },
+    duration: '12 semanas',
+    spots: '5000',
     requirements: {
       title: 'Eligibility criteria',
       list: [
@@ -78,10 +76,9 @@ const data = [
       directedTo: 'Joven Profesional, Profesional experimentado',
       fromUniversity: 'Cualquier universidad',
     },
-    time: {
-      duration: '15 semanas',
-      spots: '300',
-    },
+    duration: '15 semanas',
+    spots: '300',
+
     requirements: {
       title: 'Eligibility criteria',
       list: [
@@ -121,9 +118,9 @@ const Scholarship = () => {
     <View style={styles.container}>
       <LinearGradient
         style={styles.linearContainer}
-        colors={['#3ca6bf', '#1b159b']}>
+        colors={['white', '#54001A']}>
         <View style={styles.titleContainer}>
-          <LinearGradient style={styles.linear} colors={['#1b159b', '#3ca6bf']}>
+          <LinearGradient style={styles.linear} colors={['#54001A', 'white']}>
             <Text style={styles.title}>Categoría: </Text>
             <Picker
               selectedValue={selectedValue}

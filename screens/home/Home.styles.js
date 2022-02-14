@@ -3,9 +3,9 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#b7d7e8',
+    backgroundColor: '#E2E2E2',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 25,
   },
   imageContainer: {
     flex: 3,
@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '700',
-    marginLeft: 15,
-    marginTop: 10,
+    marginLeft: 30,
+    marginTop: 30,
     color: 'black',
     lineHeight: 35,
   },
   description: {
     marginTop: 15,
-    marginLeft: 15,
+    marginLeft: 30,
     fontSize: 18,
     color: '#3e4444',
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: 250,
     justifyContent: 'center',
     borderRadius: 15,
-    backgroundColor: 'black',
+    backgroundColor: '#54001A',
     padding: 10,
   },
   buttonText: {

@@ -3,12 +3,11 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
   },
   item: {
     flex: 1,
-    marginVertical: 5,
     backgroundColor: 'white',
+    marginHorizontal: 20,
   },
   image: {
     height: 200,
@@ -76,8 +75,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   requirementContainer: {
-    marginHorizontal: 10,
+    paddingHorizontal: 10,
     backgroundColor: '#F5F9FB',
+    marginBottom: 15,
   },
   requirement: {
     fontSize: 22,
@@ -102,19 +102,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   footer: {
-    height: 140,
+    height: 120,
     alignItems: 'center',
+    backgroundColor: '#A1A1A1',
   },
   footerText: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '700',
     textAlign: 'center',
     lineHeight: 24,
-    paddingTop: 20,
+    paddingTop: 10,
+    color: 'white',
   },
   button: {
     width: '70%',
-    backgroundColor: '#EC0000',
+    backgroundColor: '#54001A',
     borderRadius: 15,
     alignItems: 'center',
     marginTop: 'auto',

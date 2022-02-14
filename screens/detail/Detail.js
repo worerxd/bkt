@@ -33,10 +33,8 @@ const data = [
       directedTo: 'Joven Profesional, Profesional experimentado',
       fromUniversity: 'Cualquier universidad',
     },
-    time: {
-      duration: '12 semanas',
-      spots: '5000',
-    },
+    duration: '12 semanas',
+    spots: '5000',
     requirements: {
       title: 'Eligibility criteria',
       list: [
@@ -79,10 +77,8 @@ const data = [
       directedTo: 'Joven Profesional, Profesional experimentado',
       fromUniversity: 'Cualquier universidad',
     },
-    time: {
-      duration: '15 semanas',
-      spots: '300',
-    },
+    duration: '15 semanas',
+    spots: '300',
     requirements: {
       title: 'Eligibility criteria',
       list: [
