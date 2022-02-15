@@ -16,6 +16,8 @@ import HomeScreen from './screens/home/Home';
 import ScholarshipScreen from './screens/scholarship/Scholarship';
 import DetailScreen from './screens/detail/Detail';
 import SignUpScreen from './screens/signUp/SignUp';
+import LoginScreen from './screens/login/Login';
+import RegisterScreen from './screens/register/Register';
 
 import iconsName from './utils/icons';
 
@@ -50,7 +52,7 @@ const Landing = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Landing"
           component={Landing}
@@ -60,6 +62,20 @@ const App = () => {
           name="Detail"
           component={DetailScreen}
           options={{headerTitle: 'Detalle de Beca'}}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

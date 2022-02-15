@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import {FontAwesome, Ionicons} from '@expo/vector-icons';
 import {format} from 'date-fns';
-import {FieldArray} from 'formik';
+import {FieldArray, getIn} from 'formik';
 import {useState} from 'react';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -12,11 +12,11 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-
 import styles from './SignUpForm.styles';
 
 const SignUpForm = props => {
-  const {handleSubmit, values, handleChange} = props;
+  const {handleSubmit, values, handleChange, errors, handleBlur, touched} =
+    props;
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [modeStart, setModeStart] = useState('date');
@@ -60,25 +60,41 @@ const SignUpForm = props => {
         style={styles.input}
         placeholder="Ejemplo: Beca Full Stack Javascript"
         onChangeText={handleChange('title')}
+        onBlur={handleBlur('title')}
         value={values.title}
       />
+      {errors.title && (
+        <Text style={styles.errosMessage}>{touched.title && errors.title}</Text>
+      )}
       <Text style={styles.inputLabel}>ORGANIZACIÓN</Text>
       <TextInput
         style={styles.input}
         placeholder="Ejemplo: MakeItReal"
         onChangeText={handleChange('hoster')}
+        onBlur={handleBlur('hoster')}
         value={values.hoster}
       />
+      {errors.hoster && (
+        <Text style={styles.errosMessage}>
+          {touched.hoster && errors.hoster}
+        </Text>
+      )}
       <Text style={styles.inputLabel}>DESCRIPCIÓN</Text>
       <TextInput
         style={styles.inputArea}
         placeholder="Ejemplo: Beca programa Top horario completo..."
         onChangeText={handleChange('description')}
+        onBlur={handleBlur('description')}
         value={values.description}
         multiline
         numberOfLines={4}
         textAlignVertical="top"
       />
+      {errors.description && (
+        <Text style={styles.errosMessage}>
+          {touched.description && errors.description}
+        </Text>
+      )}
       <Text style={styles.inputLabel}>PALABRAS CLAVE</Text>
       <FieldArray name="tags">
         {fieldArrayProps => {
@@ -122,7 +138,6 @@ const SignUpForm = props => {
           );
         }}
       </FieldArray>
-
       <View style={styles.dateButtonsContainer}>
         <View style={styles.dateLabelAndButtonContainer}>
           <Text style={styles.inputLabel}>FECHA DE INICIO</Text>
@@ -175,33 +190,54 @@ const SignUpForm = props => {
         style={styles.inputArea}
         placeholder="Ejemplo: Todas las personas, Con previo conocimiento en programación, etc..."
         onChangeText={handleChange('target.directedTo')}
+        onBlur={handleBlur('target.directedTo')}
         value={values.target.directedTo}
         multiline
         numberOfLines={3}
         textAlignVertical="top"
       />
-
+      <Text style={styles.errosMessage}>
+        {getIn(touched, 'target.directedTo') &&
+          getIn(errors, 'target.directedTo')}
+      </Text>
       <Text style={styles.inputLabel}>UNIVERSIDADES</Text>
       <TextInput
         style={styles.input}
         placeholder="Ejemplo: Universidad Privada del Norte, UPC ó Cualquier universidad."
         onChangeText={handleChange('target.fromUniversity')}
+        onBlur={handleBlur('target.fromUniversity')}
         value={values.target.fromUniversity}
       />
+      <Text style={styles.errosMessage}>
+        {getIn(touched, 'target.fromUniversity') &&
+          getIn(errors, 'target.fromUniversity')}
+      </Text>
+
       <Text style={styles.inputLabel}>DURACIÓN</Text>
       <TextInput
         style={styles.input}
         placeholder="Ejemplo: 16 semanas"
         onChangeText={handleChange('duration')}
+        onBlur={handleBlur('duration')}
         value={values.duration}
       />
+      {errors.duration && (
+        <Text style={styles.errosMessage}>
+          {touched.duration && errors.duration}
+        </Text>
+      )}
       <Text style={styles.inputLabel}>PLAZAS</Text>
       <TextInput
         style={styles.input}
-        placeholder="250 plazas"
+        placeholder="Ejemplo: 250"
         onChangeText={handleChange('spots')}
+        onBlur={handleBlur('spots')}
         value={values.spots}
+        keyboardType="numeric"
       />
+      {errors.spots && (
+        <Text style={styles.errosMessage}>{touched.spots && errors.spots}</Text>
+      )}
       <Text style={styles.inputLabel}>CATEGORÍA DEL REQUERIMIENTO</Text>
       <TextInput
         style={styles.input}

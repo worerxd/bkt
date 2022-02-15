@@ -79,6 +79,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#444444',
   },
+  errosMessage: {
+    color: 'red',
+    fontWeight: '700',
+  },
 });
 
 export default styles;

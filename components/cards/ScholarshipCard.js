@@ -4,6 +4,7 @@ import React from 'react';
 import {Text, View, TouchableHighlight} from 'react-native';
 import {FontAwesome, FontAwesome5} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
+
 import styles from './ScholarshipCard.styles';
 
 const ScholarshipCard = props => {

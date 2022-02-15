@@ -4,7 +4,8 @@ import {Image, Text, ImageBackground, View, ScrollView} from 'react-native';
 import {Formik} from 'formik';
 
 import styles from './SignUp.styles';
-import SignUpForm from '../../components/forms/SignUpForm';
+import SignUpForm from '../../components/forms/signUp/SignUpForm';
+import signUpFormSchema from '../../components/forms/signUp/SignUpForm.Schema';
 
 const initialValues = {
   title: '',
@@ -58,16 +59,26 @@ const SignUp = () => {
           <Text style={styles.formTitle}>Crea una beca</Text>
           <Formik
             initialValues={initialValues}
+            validationSchema={signUpFormSchema}
             onSubmit={(values, actions) => {
               console.log('values', values);
               actions.resetForm();
             }}>
-            {({values, setFieldValue, handleSubmit, handleChange}) => (
+            {({
+              values,
+              errors,
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              touched,
+            }) => (
               <SignUpForm
                 values={values}
-                setFieldValue={setFieldValue}
+                errors={errors}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
+                touched={touched}
               />
             )}
           </Formik>
