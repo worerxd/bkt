@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './LoginForm.styles';
 
 const LoginForm = props => {
-  const {handleSubmit, values, handleChange, handleBlur} = props;
+  const {handleSubmit, values, handleChange, handleBlur, errorMessage} = props;
   const navigation = useNavigation();
   const handleRedirect = () => {
     navigation.navigate('Register');
@@ -46,13 +46,12 @@ const LoginForm = props => {
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
+          secureTextEntry
         />
       </View>
-      {/* {errors.password && (
-        <Text style={styles.errosMessage}>
-          {touched.password && errors.password}
-        </Text>
-      )} */}
+      {errorMessage && (
+        <Text style={styles.errosMessage}>Email o contraseña incorrectos</Text>
+      )}
       <TouchableHighlight style={styles.loginButton} onPress={handleSubmit}>
         <Text style={styles.loginText}>Login</Text>
       </TouchableHighlight>

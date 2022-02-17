@@ -12,6 +12,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {FontAwesome} from '@expo/vector-icons';
+import {Provider} from 'react-redux';
+import store from './store/index';
 import HomeScreen from './screens/home/Home';
 import ScholarshipScreen from './screens/scholarship/Scholarship';
 import DetailScreen from './screens/detail/Detail';
@@ -51,34 +53,36 @@ const Landing = () => {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Landing"
-          component={Landing}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Detail"
-          component={DetailScreen}
-          options={{headerTitle: 'Detalle de Beca'}}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Landing"
+            component={Landing}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Detail"
+            component={DetailScreen}
+            options={{headerTitle: 'Detalle de Beca'}}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

@@ -1,8 +1,10 @@
+import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import React from 'react';
 import {Keyboard, Text, TouchableWithoutFeedback, View} from 'react-native';
 import RegisterForm from '../../components/forms/register/RegisterForm';
 import registerFormSchema from '../../components/forms/register/RegisterForm.Schema';
+import userServices from '../../services/users';
 import styles from './Register.styles';
 
 const initialValues = {
@@ -13,6 +15,19 @@ const initialValues = {
 };
 
 const Register = () => {
+  const navigation = useNavigation();
+
+  const handleRegister = async values => {
+    try {
+      const response = await userServices.createUser(values);
+      const data = await response.json();
+      if (response.ok) {
+        navigation.navigate('Login', data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -21,8 +36,8 @@ const Register = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={registerFormSchema}
-            onSubmit={(values, actions) => {
-              console.log('values', values);
+            onSubmit={async (values, actions) => {
+              await handleRegister(values);
               actions.resetForm();
             }}>
             {({

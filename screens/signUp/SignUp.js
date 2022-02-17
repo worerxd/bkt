@@ -1,11 +1,20 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
-import {Image, Text, ImageBackground, View, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Image,
+  Text,
+  ImageBackground,
+  View,
+  ScrollView,
+  Modal,
+  Pressable,
+} from 'react-native';
 import {Formik} from 'formik';
 
 import styles from './SignUp.styles';
 import SignUpForm from '../../components/forms/signUp/SignUpForm';
 import signUpFormSchema from '../../components/forms/signUp/SignUpForm.Schema';
+import scholarshipServices from '../../services/scholarships';
 
 const initialValues = {
   title: '',
@@ -38,6 +47,17 @@ const initialValues = {
 };
 
 const SignUp = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleCreateScholarship = async values => {
+    try {
+      const response = await scholarshipServices.createScholarship(values);
+      if (response.ok) {
+        setOpenModal(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.body}>
@@ -56,12 +76,33 @@ const SignUp = () => {
           </ImageBackground>
         </View>
         <View style={styles.formContainer}>
+          <Modal
+            animationType="slide"
+            transparent
+            visible={openModal}
+            onRequestClose={() => {
+              setOpenModal(!openModal);
+            }}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text style={styles.modalText}>
+                  Su solicitud ha sido enviada para revisión, nos contactaremos
+                  con usted pronto.
+                </Text>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setOpenModal(!openModal)}>
+                  <Text style={styles.textStyle}>Aceptar</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
           <Text style={styles.formTitle}>Crea una beca</Text>
           <Formik
             initialValues={initialValues}
             validationSchema={signUpFormSchema}
-            onSubmit={(values, actions) => {
-              console.log('values', values);
+            onSubmit={async (values, actions) => {
+              await handleCreateScholarship(values);
               actions.resetForm();
             }}>
             {({

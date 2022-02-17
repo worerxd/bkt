@@ -8,12 +8,12 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './ScholarshipCard.styles';
 
 const ScholarshipCard = props => {
-  const {id, date, title, hoster, tags, target, duration, spots} = props;
+  const {_id, date, title, hoster, tags, target, duration, spots} = props;
   const navigation = useNavigation();
 
   const handleCardDetail = () => {
     try {
-      navigation.navigate('Detail', {id});
+      navigation.navigate('Detail', {_id});
     } catch (error) {
       alert(error);
     }
@@ -37,7 +37,7 @@ const ScholarshipCard = props => {
           <Text style={styles.hoster}>{hoster}</Text>
           <View style={styles.tagsContainer}>
             {tags.map(tag => (
-              <View key={tag.id} style={styles.tag}>
+              <View key={tag.name} style={styles.tag}>
                 <Text style={styles.tagText}>{tag.name}</Text>
               </View>
             ))}
