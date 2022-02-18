@@ -1,6 +1,7 @@
 /* eslint-disable default-param-last */
 import {
   LOAD_SCHOLARSHIPS,
+  LOAD_SCHOLARSHIPS_PENDING,
   SHOW_SCHOLARSHIP,
   SHOW_LOADER,
   HIDE_LOADER,
@@ -9,6 +10,7 @@ import {
 
 const initiialState = {
   scholarships: [],
+  scholarshipsPending: [],
   currentScholarship: null,
   isLoading: false,
   message: '',
@@ -20,6 +22,11 @@ function reducer(state = initiialState, action) {
       return {
         ...state,
         scholarships: action.payload,
+      };
+    case LOAD_SCHOLARSHIPS_PENDING:
+      return {
+        ...state,
+        scholarshipsPending: action.payload,
       };
     case SHOW_SCHOLARSHIP:
       return {

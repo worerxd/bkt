@@ -3,6 +3,7 @@ const iconsName = routeName => {
     Scholarships: 'graduation-cap',
     Home: 'home',
     SignUp: 'wpforms',
+    Pending: 'edit',
   };
 
   return icons[routeName] || 'graduation-cap';

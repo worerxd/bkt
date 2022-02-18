@@ -34,10 +34,21 @@ const createScholarship = data => {
   return fetch(`${URL_BASE}/api/scholarships/`, payload);
 };
 
+const changeScholarshipState = id => {
+  const payload = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(`${URL_BASE}/api/scholarships/${id}`, payload);
+};
+
 const scholarshipServices = {
   getAllScholarships,
   getScholarshipById,
   createScholarship,
+  changeScholarshipState,
 };
 
 export default scholarshipServices;

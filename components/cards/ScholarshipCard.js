@@ -25,13 +25,6 @@ const ScholarshipCard = props => {
           <FontAwesome name="circle" size={14} color="green" />
           {` Abierta hasta ${date.end}`}
         </Text>
-        {/* <Image
-          style={styles.image}
-          source={{
-            uri: imageUrl,
-          }}
-          resizeMode="stretch"
-        /> */}
         <View style={styles.header}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.hoster}>{hoster}</Text>

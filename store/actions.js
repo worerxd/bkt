@@ -1,6 +1,7 @@
 import scholarshipServices from '../services/scholarships';
 import {
   LOAD_SCHOLARSHIPS,
+  LOAD_SCHOLARSHIPS_PENDING,
   SHOW_SCHOLARSHIP,
   SHOW_LOADER,
   HIDE_LOADER,
@@ -27,6 +28,11 @@ export const loadScholarships = scholarships => ({
   payload: scholarships,
 });
 
+export const loadScholarshipsPending = scholarships => ({
+  type: LOAD_SCHOLARSHIPS_PENDING,
+  payload: scholarships,
+});
+
 export const showScholarship = scholarship => ({
   type: SHOW_SCHOLARSHIP,
   payload: scholarship,
@@ -39,6 +45,20 @@ export const fetchScholarships = () => async dispatch => {
     const scholarships = await scholarshipServices.getAllScholarships();
     const data = await scholarships.json();
     dispatch(loadScholarships(data));
+  } catch (error) {
+    dispatch(errorMessage(error.message));
+  } finally {
+    dispatch(hideLoader());
+  }
+};
+export const fetchScholarshipsPending = () => async dispatch => {
+  dispatch(showLoader());
+
+  try {
+    const scholarships = await scholarshipServices.getAllScholarships();
+    const data = await scholarships.json();
+    const filteredData = data.filter(item => item.state === 'pending');
+    dispatch(loadScholarshipsPending(filteredData));
   } catch (error) {
     dispatch(errorMessage(error.message));
   } finally {

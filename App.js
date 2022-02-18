@@ -1,18 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {FontAwesome} from '@expo/vector-icons';
 import {Provider} from 'react-redux';
+
 import store from './store/index';
 import HomeScreen from './screens/home/Home';
 import ScholarshipScreen from './screens/scholarship/Scholarship';
@@ -22,6 +15,7 @@ import LoginScreen from './screens/login/Login';
 import RegisterScreen from './screens/register/Register';
 
 import iconsName from './utils/icons';
+import PendingScreen from './screens/pending/Pending';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -46,6 +40,7 @@ const Landing = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Scholarships" component={ScholarshipScreen} />
       <Tab.Screen name="SignUp" component={SignUpScreen} />
+      <Tab.Screen name="Pending" component={PendingScreen} />
       {/* <Tab.Screen name="Locations" component={LocationsScreen} /> */}
     </Tab.Navigator>
   );
