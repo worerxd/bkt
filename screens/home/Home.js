@@ -1,11 +1,16 @@
+/* eslint-disable react/style-prop-object */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, {useEffect, useRef, useState} from 'react';
 import {Image, Text, TouchableOpacity, View, Platform} from 'react-native';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 
+import {useDispatch, useSelector} from 'react-redux';
+import {StatusBar} from 'expo-status-bar';
 import styles from './Home.styles';
 import deviceServices from '../../services/devices';
+import {getUserFromAsyncStorage} from '../../store/actions';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -29,7 +34,7 @@ async function registerForPushNotificationsAsync() {
       return null;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    deviceServices.createDeviceToken({token});
+    await deviceServices.createDeviceToken({token});
     console.log(token);
   } else {
     alert('Must use physical device for Push Notifications');
@@ -49,21 +54,20 @@ async function registerForPushNotificationsAsync() {
 
 const Home = ({navigation}) => {
   const [expoPushToken, setExpoPushToken] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
 
-    // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current =
       Notifications.addNotificationReceivedListener(notificationText => {
         setNotification(notificationText);
       });
 
-    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener(response => {
         console.log(response);
@@ -76,16 +80,22 @@ const Home = ({navigation}) => {
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
+
+  useEffect(() => {
+    dispatch(getUserFromAsyncStorage());
+  }, []);
   const goToAbout = () => {
     navigation.navigate('Scholarships');
   };
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
+        <StatusBar style="light" />
         <Image
           style={styles.image}
+          resizeMode="contain"
           source={{
-            uri: 'https://elheraldoslp.com.mx/wp-content/uploads/2017/04/estudios2.jpg',
+            uri: 'https://freepikpsd.com/file/2019/10/scholarship-png-4-Transparent-Images.png',
           }}
         />
       </View>
@@ -93,7 +103,7 @@ const Home = ({navigation}) => {
         <Text style={styles.title}>Encuentra tu {'\n'}beca ideal !</Text>
         <Text style={styles.description}>
           El app donde encontrarás {'\n'}todas las becas en un {'\n'}mismo
-          lugar. {expoPushToken}
+          lugar.
         </Text>
       </View>
       <View style={styles.buttonContainer}>

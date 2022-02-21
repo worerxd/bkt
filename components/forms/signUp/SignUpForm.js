@@ -118,7 +118,7 @@ const SignUpForm = props => {
                       <Ionicons
                         name="remove-circle"
                         size={30}
-                        color="#54001A"
+                        color="#474554"
                       />
                     </TouchableHighlight>
                     <TouchableHighlight
@@ -128,7 +128,7 @@ const SignUpForm = props => {
                       <Ionicons
                         name="ios-add-circle"
                         size={30}
-                        color="#54001A"
+                        color="#474554"
                       />
                     </TouchableHighlight>
                   </View>
@@ -273,7 +273,7 @@ const SignUpForm = props => {
                       <Ionicons
                         name="remove-circle"
                         size={30}
-                        color="#54001A"
+                        color="#474554"
                       />
                     </TouchableHighlight>
                     <TouchableHighlight
@@ -283,7 +283,7 @@ const SignUpForm = props => {
                       <Ionicons
                         name="ios-add-circle"
                         size={30}
-                        color="#54001A"
+                        color="#474554"
                       />
                     </TouchableHighlight>
                   </View>

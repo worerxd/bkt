@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     paddingVertical: 12,
-    backgroundColor: '#DD660D',
+    backgroundColor: '#800000',
     borderRadius: 5,
     marginTop: 20,
   },
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
   redirectLink: {
     fontSize: 17,
     fontWeight: 'bold',
-    color: '#942B4E',
+    color: '#800000',
+    textDecorationLine: 'underline',
   },
   errosMessage: {
     color: 'red',

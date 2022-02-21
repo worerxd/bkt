@@ -58,9 +58,20 @@ const LoginForm = props => {
       <View style={styles.redirectContainer}>
         <Text style={styles.redirectText}>No tienes una cuenta?</Text>
         <TouchableOpacity onPress={handleRedirect}>
-          <Text style={styles.redirectLink}> Créate Una</Text>
+          <Text style={styles.redirectLink}> Créate una</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+            color: 'black',
+            textDecorationLine: 'underline',
+          }}>
+          Ingresar sin cuenta
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

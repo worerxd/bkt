@@ -7,8 +7,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 30,
     backgroundColor: 'white',
-    borderColor: 'gray',
-    borderWidth: 1,
+  },
+  lineCard: {
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: '#810035',
+    borderWidth: 3,
   },
   date: {
     paddingBottom: 5,
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
   tag: {
     paddingVertical: 6,
     paddingHorizontal: 10,
-    backgroundColor: 'purple',
+    backgroundColor: '#929292',
     borderRadius: 5,
     textAlign: 'center',
     alignSelf: 'flex-start',

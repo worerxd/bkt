@@ -3,19 +3,22 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 20,
+    backgroundColor: '#d0d8db',
   },
   item: {
     flex: 1,
     backgroundColor: 'white',
     marginHorizontal: 20,
-  },
-  image: {
-    height: 200,
-    marginHorizontal: 'auto',
-    width: '100%',
+    paddingHorizontal: 15,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: '#810035',
+    borderWidth: 3,
   },
   header: {
-    paddingVertical: 5,
+    paddingVertical: 15,
     paddingHorizontal: 10,
   },
   title: {
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
   tag: {
     paddingVertical: 6,
     paddingHorizontal: 15,
-    backgroundColor: 'purple',
+    backgroundColor: '#929292',
     borderRadius: 5,
     textAlign: 'center',
     alignSelf: 'flex-start',
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '70%',
-    backgroundColor: '#54001A',
+    backgroundColor: '#800000',
     borderRadius: 15,
     alignItems: 'center',
     marginTop: 'auto',
@@ -127,6 +130,52 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     fontWeight: '700',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: '#55B3B1',
+    borderRadius: 20,
+    paddingHorizontal: 35,
+    paddingVertical: 15,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonModal: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#1B1717',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  modalText: {
+    marginBottom: 15,
+    fontSize: 15,
+    textAlign: 'center',
+    color: 'black',
   },
 });
 

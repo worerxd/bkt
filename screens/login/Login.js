@@ -1,10 +1,13 @@
+/* eslint-disable react/style-prop-object */
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {Image, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {StatusBar} from 'expo-status-bar';
 import LoginForm from '../../components/forms/login/LoginForm';
-import authServices from '../../services/auth';
 import styles from './Login.styles';
+import {getUserFromLogin} from '../../store/actions';
 
 const initialValues = {
   email: '',
@@ -14,23 +17,19 @@ const initialValues = {
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleLogin = async values => {
     try {
-      const response = await authServices.loginAccount(values);
-      const data = await response.json();
-      if (response.ok) {
-        setErrorMessage(false);
-        navigation.navigate('Landing', data);
-      } else {
-        setErrorMessage(true);
-      }
+      dispatch(getUserFromLogin(values));
+      navigation.navigate('BKT');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.message);
     }
   };
   return (
     <View style={styles.container}>
+      <StatusBar style="dark" />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

@@ -1,14 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, {useState} from 'react';
-import {
-  Image,
-  Text,
-  ImageBackground,
-  View,
-  ScrollView,
-  Modal,
-  Pressable,
-} from 'react-native';
+import {Image, Text, View, ScrollView, Modal, Pressable} from 'react-native';
 import {Formik} from 'formik';
 
 import styles from './SignUp.styles';
@@ -62,18 +54,13 @@ const SignUp = () => {
     <View style={styles.container}>
       <ScrollView style={styles.body}>
         <View style={styles.logoContainer}>
-          <ImageBackground
-            source={{uri: 'https://cdn.wallpapersafari.com/55/73/ghY4rc.jpg'}}
-            resizeMode="cover"
-            style={styles.backgroundImage}>
-            <Image
-              style={styles.logo}
-              source={{
-                uri: 'https://i.postimg.cc/vHDGySkf/logo1.png',
-              }}
-              resizeMode="contain"
-            />
-          </ImageBackground>
+          <Image
+            style={styles.logo}
+            source={{
+              uri: 'https://i.postimg.cc/vHDGySkf/logo1.png',
+            }}
+            resizeMode="contain"
+          />
         </View>
         <View style={styles.formContainer}>
           <Modal

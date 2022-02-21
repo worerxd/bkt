@@ -1,22 +1,28 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  constainer: {
     flex: 1,
+    backgroundColor: 'blue',
     alignItems: 'center',
-    backgroundColor: 'white',
     justifyContent: 'center',
+    marginTop: 25,
   },
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#800000',
-    marginTop: 30,
+  header: {
+    width: '100%',
     marginBottom: 15,
   },
-  formContainer: {
-    width: '70%',
-    alignItems: 'center',
+  title: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#740613',
+    marginTop: 30,
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  list: {
+    width: '100%',
+    paddingHorizontal: 15,
   },
 });
 

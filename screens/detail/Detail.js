@@ -1,124 +1,98 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import {format} from 'date-fns';
 import {es} from 'date-fns/locale';
-import React, {useEffect} from 'react';
-import {Image, Text, View, ScrollView, TouchableHighlight} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableHighlight,
+  Modal,
+  Pressable,
+} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import styles from './Detail.styles';
 import {fetchSingleScholarship} from '../../store/actions';
-
-// const data = [
-//   {
-//     id: 1,
-//     title: 'Becas Santander Women | Emerging Leaders 2022  - LSE',
-//     imageUrl:
-//       'https://portal.andina.pe/EDPfotografia3/Thumbnail/2022/01/16/000839600W.jpg',
-//     hoster: 'London School of Economics And Political Science',
-//     description:
-//       'The Becas Santander Women | Emerging Leaders 2022 - LSE is an intensive online programme designed to enhance your negotiation skills to become more influential, persuasive and impactful in your role and throughout your career to advance and succeed in leadership positions.This is a unique scholarship opportunity for 125 women, who are managers to mid-level managers looking to progress into upper-management positions, to connect with a diverse community of aspiring leaders from around the world in a unified online environment.',
-//     date: {
-//       start: '19,02,2022',
-//       end: '19,03,2022',
-//     },
-//     tags: [
-//       {
-//         id: 1,
-//         name: 'women',
-//       },
-//       {
-//         id: 2,
-//         name: 'online',
-//       },
-//     ],
-//     target: {
-//       directedTo: 'Joven Profesional, Profesional experimentado',
-//       fromUniversity: 'Cualquier universidad',
-//     },
-//     duration: '12 semanas',
-//     spots: '5000',
-//     requirements: {
-//       title: 'Eligibility criteria',
-//       list: [
-//         {
-//           item: 'Women managers to mid-level managers looking to progress in their careers.',
-//         },
-//         {
-//           item: 'resident in any of the following countries: Argentina, Brazil, Chile, Colombia, Germany, Mexico, Peru, Poland, Portugal, Spain, UK, USA, or Uruguay.',
-//         },
-//         {
-//           item: 'English level: Fluency in English equivalent to C1',
-//         },
-//       ],
-//     },
-//     status: 'approved',
-//   },
-//   {
-//     id: 2,
-//     title: 'Santander Scholarships Women | W50 Leadership 2022',
-//     hoster: 'London School of Economics And Political Science',
-//     imageUrl:
-//       'https://www.pronabec.gob.pe/wp-content/uploads/2021/02/Talentos-Pronabec-3.jpg',
-//     description:
-//       'The Becas Santander Women | Emerging Leaders 2022 - LSE is an intensive online programme designed to enhance your negotiation skills to become more influential, persuasive and impactful in your role and throughout your career to advance and succeed in leadership positions.This is a unique scholarship opportunity for 125 women, who are managers to mid-level managers looking to progress into upper-management positions, to connect with a diverse community of aspiring leaders from around the world in a unified online environment.',
-//     date: {
-//       start: '19/02/2022',
-//       end: '19/03/2022',
-//     },
-//     tags: [
-//       {
-//         id: 1,
-//         name: 'women',
-//       },
-//       {
-//         id: 2,
-//         name: 'presencial',
-//       },
-//     ],
-//     target: {
-//       directedTo: 'Joven Profesional, Profesional experimentado',
-//       fromUniversity: 'Cualquier universidad',
-//     },
-//     duration: '15 semanas',
-//     spots: '300',
-//     requirements: {
-//       title: 'Eligibility criteria',
-//       list: [
-//         {
-//           item: 'Women managers to mid-level managers looking to progress in their careers.',
-//         },
-//         {
-//           item: 'Resident in any of the following countries: Argentina, Brazil, Chile, Colombia, Germany, Mexico, Peru, Poland, Portugal, Spain, UK, USA, or Uruguay.',
-//         },
-//         {
-//           item: 'English level: Fluency in English equivalent to C1',
-//         },
-//       ],
-//     },
-//     status: 'approved',
-//   },
-// ];
 
 const Detail = ({route}) => {
   const {_id: id} = route.params;
   const dispatch = useDispatch();
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalAuth, setOpenModalAuth] = useState(false);
   const scholarship = useSelector(state => state.currentScholarship);
+  const user = useSelector(state => state.user);
+  const navigator = useNavigation();
 
   useEffect(async () => {
     dispatch(fetchSingleScholarship(id));
   }, [id]);
 
+  const handleInscription = () => {
+    if (!user) {
+      setOpenModal(true);
+    } else {
+      setOpenModalAuth(true);
+    }
+  };
+
+  const handleNavigateTologin = () => {
+    setOpenModal(!openModal);
+    navigator.navigate('Login');
+  };
+
+  const handleNavigateToScholarships = () => {
+    setOpenModal(!openModalAuth);
+    navigator.navigate('Scholarships');
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.item}>
+        <Modal
+          animationType="slide"
+          transparent
+          visible={openModal}
+          onRequestClose={() => {
+            setOpenModal(!openModal);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>
+                Para poder inscribirse, debe primero ingresar con su cuenta.
+              </Text>
+              <Pressable
+                style={[styles.buttonModal, styles.buttonClose]}
+                onPress={handleNavigateTologin}>
+                <Text style={styles.textStyle}>Aceptar</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent
+          visible={openModalAuth}
+          onRequestClose={() => {
+            setOpenModal(!openModalAuth);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>
+                Muchas gracias por inscribirse, nos comunicaremos con usted
+                pronto.
+              </Text>
+              <Pressable
+                style={[styles.buttonModal, styles.buttonClose]}
+                onPress={handleNavigateToScholarships}>
+                <Text style={styles.textStyle}>Aceptar</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
         {scholarship ? (
           <View>
-            <Image
-              style={styles.image}
-              source={{
-                uri: scholarship.imageUrl,
-              }}
-            />
             <View style={styles.header}>
               <Text style={styles.title}>{scholarship.title}</Text>
               <Text style={styles.hoster}>{scholarship.hoster}</Text>
@@ -139,7 +113,6 @@ const Detail = ({route}) => {
                 })} -  ${format(new Date(scholarship?.date?.end), 'PPPP', {
                   locale: es,
                 })}`}
-                .{/* ${scholarship.date.end} */}
               </Text>
               <Text style={styles.directedTo}>
                 <Text style={styles.directedToSpan}>Dirigido a: </Text>
@@ -171,7 +144,7 @@ const Detail = ({route}) => {
             'dd/MM/yy',
           )} al ${format(new Date(2022, 11, 3), 'dd/MM/yy')} (GMT-05:00)`}
         </Text>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={handleInscription}>
           <Text style={styles.buttonText}>Inscribirme</Text>
         </TouchableHighlight>
       </View>

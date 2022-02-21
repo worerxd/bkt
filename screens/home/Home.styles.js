@@ -3,45 +3,45 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E2E2E2',
+    backgroundColor: '#d0d8db',
     justifyContent: 'center',
-    marginTop: 25,
   },
   imageContainer: {
     flex: 3,
+    marginTop: 15,
   },
   image: {
     flex: 1,
     borderBottomLeftRadius: 100,
   },
   body: {
-    flex: 2,
+    flex: 3,
   },
   title: {
-    fontSize: 30,
+    fontSize: 36,
     fontWeight: '700',
     marginLeft: 30,
     marginTop: 30,
     color: 'black',
-    lineHeight: 35,
+    lineHeight: 42,
   },
   description: {
     marginTop: 15,
     marginLeft: 30,
-    fontSize: 18,
+    fontSize: 22,
     color: '#3e4444',
   },
   buttonContainer: {
     flex: 1,
     alignItems: 'center',
-    marginBottom: 15,
+    marginVertical: 15,
   },
   button: {
     alignItems: 'center',
     width: 250,
     justifyContent: 'center',
     borderRadius: 15,
-    backgroundColor: '#54001A',
+    backgroundColor: '#474554',
     padding: 10,
   },
   buttonText: {

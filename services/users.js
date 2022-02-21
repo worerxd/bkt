@@ -1,7 +1,8 @@
 /* eslint-disable import/no-unresolved */
-import {REACT_APP_API_URL_BASE} from '@env';
 
-const URL_BASE = REACT_APP_API_URL_BASE;
+const URL_BASE = 'https://bkt-peru.herokuapp.com';
+
+// const URL_BASE = REACT_APP_API_URL_BASE;
 const createUser = data => {
   const payload = {
     method: 'POST',

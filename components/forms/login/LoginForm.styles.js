@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     paddingVertical: 12,
-    backgroundColor: '#DD660D',
+    backgroundColor: '#800000',
     borderRadius: 5,
     marginTop: 20,
   },
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
   },
   redirectContainer: {
     flexDirection: 'row',
-    marginVertical: 35,
+    marginTop: 35,
+    marginBottom: 15,
   },
   redirectText: {
     fontSize: 17,
@@ -65,7 +66,8 @@ const styles = StyleSheet.create({
   redirectLink: {
     fontSize: 17,
     fontWeight: 'bold',
-    color: '#942B4E',
+    color: '#800000',
+    textDecorationLine: 'underline',
   },
   errosMessage: {
     color: 'red',

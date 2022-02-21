@@ -106,7 +106,7 @@ const RegisterForm = props => {
       <View style={styles.redirectContainer}>
         <Text style={styles.redirectText}>Ya tienes una cuenta?</Text>
         <TouchableOpacity onPress={handleRedirect}>
-          <Text style={styles.redirectLink}> Logeate</Text>
+          <Text style={styles.redirectLink}> Logueate</Text>
         </TouchableOpacity>
       </View>
     </View>

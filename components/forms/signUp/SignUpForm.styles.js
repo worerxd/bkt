@@ -5,11 +5,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     padding: 5,
     backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   inputArea: {
     marginBottom: 5,
     padding: 5,
     backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   tagContainer: {
     marginBottom: 5,
@@ -22,6 +26,8 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingHorizontal: 5,
     backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   tagButtonsContainer: {
     flexDirection: 'row',
@@ -29,7 +35,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginVertical: 30,
-    backgroundColor: '#54001A',
+    backgroundColor: '#474554',
     width: '100%',
     alignSelf: 'center',
     borderRadius: 5,
@@ -51,8 +57,7 @@ const styles = StyleSheet.create({
   dateButton: {
     paddingVertical: 5,
     paddingHorizontal: 5,
-    backgroundColor: '#54001A',
-    borderRadius: 5,
+    backgroundColor: '#474554',
   },
   dateText: {
     color: 'white',
@@ -65,6 +70,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     justifyContent: 'space-between',
     backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   inputLabel: {
     fontSize: 14,

@@ -6,11 +6,16 @@ import {
   SHOW_LOADER,
   HIDE_LOADER,
   ERROR_MESSAGE,
+  REGISTER_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+  GET_USER_FROM_ASYNCSTORAGE,
 } from './types';
 
 const initiialState = {
   scholarships: [],
   scholarshipsPending: [],
+  user: null,
   currentScholarship: null,
   isLoading: false,
   message: '',
@@ -47,6 +52,26 @@ function reducer(state = initiialState, action) {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case REGISTER_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case LOGIN_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case GET_USER_FROM_ASYNCSTORAGE:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

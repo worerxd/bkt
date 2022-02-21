@@ -1,4 +1,6 @@
+/* eslint-disable react/style-prop-object */
 import {useNavigation} from '@react-navigation/native';
+import {StatusBar} from 'expo-status-bar';
 import {Formik} from 'formik';
 import React from 'react';
 import {Keyboard, Text, TouchableWithoutFeedback, View} from 'react-native';
@@ -31,6 +33,7 @@ const Register = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
+        <StatusBar style="dark" />
         <Text style={styles.title}>Crear Cuenta</Text>
         <View style={styles.formContainer}>
           <Formik

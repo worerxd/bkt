@@ -1,34 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React, {useEffect} from 'react';
-import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import PendingCard from '../../components/cards/PendingCard';
 import {fetchScholarshipsPending} from '../../store/actions';
-
-const styles = StyleSheet.create({
-  constainer: {
-    flex: 1,
-    backgroundColor: '#DEEAEE',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 25,
-  },
-  header: {
-    textAlign: 'left',
-    width: '100%',
-    marginBottom: 15,
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#740613',
-    marginTop: 30,
-    marginBottom: 15,
-  },
-  list: {
-    width: '100%',
-  },
-});
+import styles from './Pending.styles';
 
 const Pending = () => {
   const dispatch = useDispatch();
@@ -41,8 +17,7 @@ const Pending = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Nombre de la beca</Text>
-        <TextInput placeholder="Nombre de la beca" />
+        <Text style={styles.title}>Becas pendientes</Text>
       </View>
       <View style={styles.list}>
         {scholarships.length > 0 ? (

@@ -1,43 +1,10 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {useDispatch} from 'react-redux';
 import deviceServices from '../../services/devices';
 import scholarshipServices from '../../services/scholarships';
 import {fetchScholarshipsPending} from '../../store/actions';
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    padding: 8,
-    marginVertical: 5,
-    marginHorizontal: 5,
-    borderColor: 'gray',
-    borderWidth: 1,
-    justifyContent: 'space-between',
-  },
-  body: {
-    paddingVertical: 5,
-    paddingHorizontal: 12,
-  },
-  hoster: {
-    paddingVertical: 10,
-    color: '#202124',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'gray',
-  },
-  approveButton: {
-    backgroundColor: 'maroon',
-    padding: 10,
-    borderRadius: 5,
-  },
-  approveText: {
-    color: 'white',
-    textAlign: 'center',
-  },
-});
+import styles from './PendingCard.styles';
 
 const PendingCard = props => {
   const dispatch = useDispatch();
@@ -47,8 +14,8 @@ const PendingCard = props => {
     const message = {
       to: expoPushToken,
       sound: 'default',
-      title: 'Original Title',
-      body: 'And here is the body!',
+      title: 'BKT',
+      body: 'Una nueva beca ha sido registrada!',
       data: {someData: 'goes here'},
     };
 
@@ -68,7 +35,7 @@ const PendingCard = props => {
     const devices = await deviceResponse.json();
 
     const tokenDevices = devices.map(device => device.token);
-
+    console.log(tokenDevices);
     const response = await scholarshipServices.changeScholarshipState(_id);
     if (response.ok) {
       dispatch(fetchScholarshipsPending());

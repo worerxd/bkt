@@ -3,26 +3,21 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#DEEAEE',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 25,
+    backgroundColor: '#d0d8db',
   },
   linearContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#d0d8db',
   },
   list: {
+    marginTop: 20,
     flex: 3,
   },
-  titleContainer: {
-    textAlign: 'left',
-    width: '100%',
-    flexDirection: 'row',
-    marginBottom: 15,
-  },
   title: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     fontWeight: '700',
   },
