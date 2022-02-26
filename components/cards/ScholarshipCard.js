@@ -4,13 +4,15 @@ import React from 'react';
 import {Text, View, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {FontAwesome, FontAwesome5} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
+import {format} from 'date-fns';
 
+import {es} from 'date-fns/locale';
 import styles from './ScholarshipCard.styles';
 
 const ScholarshipCard = props => {
   const {_id, date, title, hoster, tags, target, duration, spots} = props;
   const navigation = useNavigation();
-
+  console.log(date);
   const handleCardDetail = () => {
     try {
       navigation.navigate('Detail', {_id});
@@ -24,7 +26,9 @@ const ScholarshipCard = props => {
         <View style={styles.lineCard}>
           <Text style={styles.date}>
             <FontAwesome name="circle" size={14} color="green" />
-            {` Abierta hasta ${date.end}`}
+            {` Abierta hasta ${format(new Date(date?.end), 'dd-MM-yyyy', {
+              locale: es,
+            })}`}
           </Text>
           <View style={styles.header}>
             <Text style={styles.title}>{title}</Text>
